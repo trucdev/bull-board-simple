@@ -1,0 +1,20 @@
+{
+  "name": "queue-board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bull-board/express": "^3.8.1",
+    "bull": "^4.2.0",
+    "connect-ensure-login": "^0.1.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
+  }
+}
