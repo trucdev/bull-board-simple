@@ -1,13 +1,25 @@
 {
-  "name": "queue-board",
+  "name": "bull-board-simple",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
+  "bin": {
+    "bull-board-simple": "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:trucdev/bull-board-simple.git"
+  },
+  "keywords": [
+    "bull board",
+    "bulljs",
+    "queue"
+  ],
+  "author": "trucdev@gmail.com",
   "license": "ISC",
   "dependencies": {
     "@bull-board/express": "^3.8.1",

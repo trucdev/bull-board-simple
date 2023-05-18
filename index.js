@@ -10,7 +10,12 @@ const LocalStrategy = require('passport-local').Strategy;
 const { ensureLoggedIn } = require('connect-ensure-login');
 const express = require('express');
 
-const ENVS = []
+if (!process.env.QUEUES) {
+  console.log('Please provide queue names');
+  console.log('Example: QUEUES="events" PASSWORD=123 bull-board-simple');
+  return;
+}
+
 const QUEUE_NAMES = process.env.QUEUES.split(' ').map(t=>t.trim()).filter(t=>t!== '');
 const PASSWORD = process.env.PASSWORD || '123456'
 
@@ -101,6 +106,8 @@ const run = async () => {
   app.listen(3210, () => {
     console.log('Running on 3210...');
     console.log('For the UI, open http://localhost:3210/ui');
+    console.log('Username: admin');
+    console.log(`Password: ${PASSWORD}`);
   });
 };
 
