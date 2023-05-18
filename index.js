@@ -19,6 +19,10 @@ if (!process.env.QUEUES) {
 const QUEUE_NAMES = process.env.QUEUES.split(' ').map(t=>t.trim()).filter(t=>t!== '');
 const PASSWORD = process.env.PASSWORD || '123456'
 
+const REDIS_HOST = process.env.REDIS_HOST || 'localhost'
+const REDIS_PORT = process.env.REDIS_PORT ? parseInt(process.env.REDIS_PORT) : 6379;
+const REDIS_PASSWORD = process.env.REDIS_PASSWORD || ''
+
 // Configure the local strategy for use by Passport.
 //
 // The local strategy require a `verify` function which receives the credentials
@@ -51,9 +55,9 @@ passport.deserializeUser((user, cb) => {
 });
 
 const redisOptions = {
-  port: 6379,
-  host: 'localhost',
-  password: '',
+  port: REDIS_PORT,
+  host: REDIS_HOST,
+  password: REDIS_PASSWORD,
   tls: false,
 };
 
