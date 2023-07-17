@@ -12,7 +12,7 @@ npm install -g bull-board-simple
 
 
 ```bash
-QUEUES="events" PASSWORD=123 REDIS_HOST=localhost REDIS_PORT=6379 REDIS_PASSWORD="" bull-board-simple
+QUEUES="events" PASSWORD=123 PREFIX="pre" REDIS_HOST=localhost REDIS_PORT=6379 REDIS_PASSWORD="" bull-board-simple
 ```
 
 Default values:

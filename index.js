@@ -23,6 +23,8 @@ const REDIS_HOST = process.env.REDIS_HOST || 'localhost'
 const REDIS_PORT = process.env.REDIS_PORT ? parseInt(process.env.REDIS_PORT) : 6379;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD || ''
 
+const PREFIX = process.env.PREFIX; 
+
 // Configure the local strategy for use by Passport.
 //
 // The local strategy require a `verify` function which receives the credentials
@@ -61,10 +63,10 @@ const redisOptions = {
   tls: false,
 };
 
-const createQueue = (queueName, prefix = 'development') => {
+const createQueue = (queueName, prefix = undefined) => {
   return new Queue(queueName, {
     redis: redisOptions,
-    // prefix,
+    prefix,
   });
 };
 
@@ -73,7 +75,7 @@ const run = async () => {
   serverAdapter.setBasePath('/ui');
 
   createBullBoard({
-    queues: QUEUE_NAMES.map((name) => new BullAdapter(createQueue(name))),
+    queues: QUEUE_NAMES.map((name) => new BullAdapter(createQueue(name, PREFIX))),
     serverAdapter,
   });
 
